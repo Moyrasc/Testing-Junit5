@@ -4,13 +4,11 @@ import java.math.BigDecimal;
 
 public class Cuenta {
     private String nombre;
-
+    private BigDecimal saldo;
     public Cuenta(String nombre, BigDecimal saldo) {
         this.saldo = saldo;
         this.nombre = nombre;
     }
-
-    private BigDecimal saldo;
 
     public String getNombre() {
         return nombre;
@@ -26,6 +24,18 @@ public class Cuenta {
 
     public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
+    }
+    public void debito(BigDecimal monto){
+        //No podemos hacerlo de esta manera debido a que Bigdecimal es inmutable
+        //this.saldo.subtract(monto);
+
+        this.saldo = this.saldo.subtract(monto);
+    }
+    public void credito(BigDecimal monto){
+        //No podemos hacerlo de esta manera debido a que Bigdecimal es inmutable
+        //this.saldo.add(monto);
+
+        this.saldo = this.saldo.add(monto);
     }
 
     @Override
