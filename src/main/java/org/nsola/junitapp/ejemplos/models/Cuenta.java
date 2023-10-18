@@ -1,4 +1,4 @@
-package org.nsola.junitapp.ejemplos;
+package org.nsola.junitapp.ejemplos.models;
 
 import org.nsola.junitapp.ejemplos.exceptions.SaldoInsuficienteException;
 
@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 public class Cuenta {
     private String nombre;
     private BigDecimal saldo;
+    private Banco banco;
     public Cuenta(String nombre, BigDecimal saldo) {
         this.saldo = saldo;
         this.nombre = nombre;
@@ -27,6 +28,15 @@ public class Cuenta {
     public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
+
+    public Banco getBanco() {
+        return banco;
+    }
+
+    public void setBanco(Banco banco) {
+        this.banco = banco;
+    }
+
     public void debito(BigDecimal monto){
         //No podemos hacerlo de esta manera debido a que Bigdecimal es inmutable
         // this.saldo.subtract(monto);
