@@ -1,6 +1,7 @@
 package org.nsola.junitapp.ejemplos;
 
 import org.junit.jupiter.api.Test;
+import org.nsola.junitapp.ejemplos.exceptions.SaldoInsuficienteException;
 
 import java.math.BigDecimal;
 
@@ -54,5 +55,14 @@ class CuentaTest {
 
     }
 
-
+    @Test
+    void testSaldoInsuficienteException() {
+        Cuenta cuenta = new Cuenta("Noe", new BigDecimal("1000.1234"));
+        Exception exception = assertThrows(SaldoInsuficienteException.class,()-> {
+            cuenta.debito(new BigDecimal(1500));
+        });
+        String actual = exception.getMessage();
+        String esperado = "Dinero Insuficiente";
+        assertEquals(esperado,actual);
+    }
 }
